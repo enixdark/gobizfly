@@ -5,7 +5,7 @@ jobs:
     strategy:
       matrix:
         go-version: [1.13.x, 1.14.x]
-        platform: [ubuntu-latest, macos-latest, windows-latest]
+        platform: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Install Go
@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         go-version: [1.13.x, 1.14.x]
-        platform: [ubuntu-latest, macos-latest, windows-latest]
+        platform: [ubuntu-latest, macos-latest]
     env:
       GOPATH: ${{ github.workspace }}
       GO111MODULE: on
@@ -34,8 +34,6 @@ jobs:
           go-version: ${{ matrix.go-version }}
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: generate vendor
-        run: go mod vendor
       - name: Test
         run: go test -race -mod=vendor ./...
   test-with-gopath:
