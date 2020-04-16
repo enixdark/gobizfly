@@ -53,7 +53,7 @@ jobs:
       - name: Test
         run: go test -race ./...
   coverage:
-    needs: [test]
+    needs: [test-with-module]
     name: coverage
     runs-on: ubuntu-latest
     steps:
