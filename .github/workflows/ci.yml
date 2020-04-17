@@ -26,6 +26,7 @@ jobs:
     env:
       GOPATH: ${{ github.workspace }}
       GO111MODULE: on
+      GOPROXY: "https://proxy.golang.org"
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Install Go
@@ -35,14 +36,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build
-				env:
-					GOPROXY: "https://proxy.golang.org"
         run: go build .
       - name: Test
-				env:
-					GOPROXY: "https://proxy.golang.org"
         run: go test -race -mod=vendor .
-        
+
   test-with-gopath:
     env:
       GOPATH: ${{ github.workspace }}
