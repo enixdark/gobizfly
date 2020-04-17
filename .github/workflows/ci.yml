@@ -36,26 +36,6 @@ jobs:
         uses: actions/checkout@v1
       - name: Run Unit tests.
         run: make test-coverage
-  test-with-gopath:
-    env:
-      GOPATH: ${{ github.workspace }}
-      GO111MODULE: off
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install Go
-        uses: actions/setup-go@v1
-        with:
-          go-version: 1.13.x
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          path: ./src/github.com/${{ github.repository }}
-      - name: ls
-        run: ls -la
-      - name: get module
-        run: go get
-      - name: Test
-        run: go test -race ./...
   coverage:
     needs: [test-with-module]
     name: coverage
@@ -69,5 +49,5 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: c91f892b8957ff9b030830b15d17d9b8e51dc0657f82ad3143ef9c4f79c757f0
         with:
-          coverageCommand: go test -v -race -coverprofile cover.out ./...
+          coverageCommand: make test-coverage
           debug: true
