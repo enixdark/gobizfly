@@ -1,4 +1,4 @@
-module github.com/bizflycloud/gobizfly
+module github.com/enxidark/gobizfly
 
 go 1.13
 
