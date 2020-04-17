@@ -7,9 +7,10 @@ builds:
   - env:
       - GO111MODULE=on
       - CGO_ENABLED=0
-    main: .
-    hooks:
-      post: make build
+    main: ./cmd/
+    binary: gobizfly
+    cmd: make build
+
 archives:
   - replacements:
       darwin: Darwin
