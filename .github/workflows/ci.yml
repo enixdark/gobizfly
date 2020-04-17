@@ -54,6 +54,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: ./src/github.com/${{ github.repository }}
+      - name: ls
+        run: ls -la
       - name: get module
         run: go get
       - name: Test
