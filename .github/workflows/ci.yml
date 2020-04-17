@@ -36,21 +36,22 @@ jobs:
         uses: actions/checkout@v1
       - name: Run Unit tests.
         run: make test-coverage
-  coverage:
-    needs: [test-with-module]
-    name: coverage
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
-        with:
-          go-version: 1.13.x
-      - uses: paambaati/codeclimate-action@v2.5.6
-        env:
-          CC_TEST_REPORTER_ID: c91f892b8957ff9b030830b15d17d9b8e51dc0657f82ad3143ef9c4f79c757f0
-        with:
-          coverageCommand: make test-coverage
-          debug: true
+  # uncomment if use codeclimate
+  # coverage:
+  #   needs: [test-with-module]
+  #   name: coverage
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - uses: actions/setup-node@master
+  #       with:
+  #         go-version: 1.13.x
+  #     - uses: paambaati/codeclimate-action@v2.5.6
+  #       env:
+  #         CC_TEST_REPORTER_ID: c91f892b8957ff9b030830b15d17d9b8e51dc0657f82ad3143ef9c4f79c757f0
+  #       with:
+  #         coverageCommand: make test-coverage
+  #         debug: true
 
   build:
     name: Build
