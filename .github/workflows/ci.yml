@@ -34,7 +34,7 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
       - name: Run Unit tests.
         run: make test-coverage
   test-with-gopath:
