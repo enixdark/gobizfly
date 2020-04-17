@@ -34,8 +34,15 @@ jobs:
           go-version: ${{ matrix.go-version }}
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Build
+				env:
+					GOPROXY: "https://proxy.golang.org"
+        run: go build .
       - name: Test
-        run: GO111MODULE=on go test -race -mod=vendor -./...
+				env:
+					GOPROXY: "https://proxy.golang.org"
+        run: go test -race -mod=vendor .
+        
   test-with-gopath:
     env:
       GOPATH: ${{ github.workspace }}
