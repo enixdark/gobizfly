@@ -10,8 +10,7 @@ builds:
     main: ./cmd/
     binary: gobizfly
     hooks:
-      pre:
-        - make build
+      - make build
     skip: true
 
 archives:
