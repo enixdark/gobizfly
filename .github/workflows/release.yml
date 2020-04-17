@@ -13,7 +13,7 @@ jobs:
         with:
           name: ${{ secrets.DOCKER_REPO }}
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }
+          password: ${{ secrets.DOCKER_PASSWORD }}
   docker:
     name: Release on GitHub
     runs-on: ubuntu-latest
